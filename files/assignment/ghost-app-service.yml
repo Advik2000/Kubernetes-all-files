@@ -1,0 +1,16 @@
+---
+apiVersion: v1 
+kind: Service 
+metadata:
+  name: ghost-app-service
+  labels:
+    author: advik
+spec:
+  type: LoadBalancer
+  ports:
+    - targetPort: 2368
+      port: 2368
+      nodePort: 30005
+  selector:
+    type: ghost-app
+... 

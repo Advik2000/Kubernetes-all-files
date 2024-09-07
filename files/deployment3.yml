@@ -1,0 +1,27 @@
+---
+apiVersion: apps/v1 
+kind: Deployment 
+metadata:
+  namespace: test-ns
+  name: registry-deployment
+  labels: 
+    type: localrepo
+    author: advik
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      type: localrepo
+  template:
+    metadata:
+      name: registry-pod
+      labels:
+        type: localrepo
+        author: advik
+    spec:
+      containers:
+        - name: myregistry
+          image: registry
+          ports:
+            - containerPort: 5000
+              hostPort: 8080

@@ -1,0 +1,24 @@
+---
+apiVersion: apps/v1 
+kind: Deployment 
+metadata:
+  name: nginx-deployment
+  labels:
+    type: proxy
+    author: advik
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      type: proxy 
+  template:
+    metadata:
+      name: nginx-pod
+      labels:
+        type: proxy
+        author: advik
+    spec:
+      containers:
+        - name: mynginx
+          image: nginx
+...
